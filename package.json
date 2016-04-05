@@ -1,0 +1,33 @@
+{
+  "name": "ecfexui-vue",
+  "version": "1.0.3",
+  "description": "ecfex 移动组件库",
+  "main": "src/index.js",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/wndershow/ecfexui-vue.git"
+    }
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ecfex ued",
+  "keywords": [
+    "ecfex",
+    "mobile ui"
+  ],
+  "maintainers": [
+    {
+      "name": "dingding",
+      "email": "d@ecfex.com"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "dingding",
+      "email": "d@ecfex.com"
+    }
+  ],
+  "license": "ISC"
+}

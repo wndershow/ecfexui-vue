@@ -1,0 +1,217 @@
+@import "./var.scss";
+
+*{
+  box-sizing: border-box;
+}
+
+$padding: padding padding-left padding-top padding-bottom padding-right padding-v padding-h;
+@each $i in $padding {
+
+  @if($i == 'padding-v'){
+    .ex-#{$i} {
+      padding-top: $rem;
+      padding-bottom: $rem;
+    }
+  }@elseif($i == 'padding-h'){
+    .ex-#{$i} {
+      padding-left: $rem;
+      padding-right: $rem;
+    }
+  }@else{
+    .ex-#{$i} {
+      #{$i}: $rem;
+    }
+  }
+
+  @each $st,$s in $size{
+    @if($i == 'padding-v'){
+      .ex-#{$i}-#{$st} {
+        padding-top: $s;
+        padding-bottom: $s;
+      }
+    }@elseif($i == 'padding-h'){
+      .ex-#{$i}-#{$st} {
+        padding-left: $s;
+        padding-right: $s;
+      }
+    }@else{
+      .ex-#{$i}-#{$st} {
+        #{$i}: $s;
+      }
+    }
+  }
+}
+.ex-padding-0{
+  padding: 0;
+}
+.ex-padding-left-0{
+  padding-left: 0;
+}
+.ex-padding-right-0{
+  padding-right: 0;
+}
+.ex-padding-top-0{
+  padding-top: 0;
+}
+.ex-padding-bottom-0{
+  padding-bottom: 0;
+}
+.ex-padding-v-0{
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.ex-padding-h-0{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+$margin: margin margin-left margin-top margin-bottom margin-right margin-v margin-h;
+@each $i in $margin {
+
+  @if($i == 'margin-v'){
+    .ex-#{$i} {
+      margin-top: $rem;
+      margin-bottom: $rem;
+    }
+  }@elseif($i == 'margin-h'){
+    .ex-#{$i} {
+      margin-left: $rem;
+      margin-right: $rem;
+    }
+  }@else{
+    .ex-#{$i} {
+      #{$i}: $rem;
+    }
+  }
+
+  @each $st,$s in $size{
+
+    @if($i == 'margin-v'){
+      .ex-#{$i}-#{$st} {
+        margin-top: $s;
+        margin-bottom: $s;
+      }
+    }@elseif($i == 'margin-h'){
+      .ex-#{$i}-#{$st} {
+        margin-left: $s;
+        margin-right: $s;
+      }
+    }@else{
+      .ex-#{$i}-#{$st} {
+        #{$i}: $s;
+      }
+    }
+  }
+
+}
+.ex-margin-0{
+  margin: 0;
+}
+.ex-margin-left-0{
+  margin-left: 0;
+}
+.ex-margin-right-0{
+  margin-right: 0;
+}
+.ex-margin-top-0{
+  margin-top: 0;
+}
+.ex-margin-bottom-0{
+  margin-bottom: 0;
+}
+.ex-margin-v-0{
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.ex-margin-h-0{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+.ex-bd{
+  border: 1px solid $colorBorder;
+}
+.ex-bd-bottom{
+  border-bottom: 1px solid $colorBorder;
+}
+.ex-bd-top{
+  border-top: 1px solid $colorBorder;
+}
+
+.ex-color-green{
+  color: $colorGreen;
+}
+
+.ex-color-black{
+  color: $colorBlack;
+}
+
+.ex-color-main{
+  color: $colorMain;
+}
+
+.ex-color-red{
+  color: $colorRed;
+}
+
+.ex-color-white{
+  color: $colorWhite;
+}
+
+.ex-bg-white{
+  background-color: $colorWhite;
+}
+
+
+/* Float blocks*/
+.ex-cf:before,.ex-cf:after {
+  content: " ";
+  display: table;
+  height: 0;
+}
+.ex-cf:after {
+  clear: both;
+}
+
+.ex-fl {
+  float: left;
+}
+.ex-fr {
+  float: right;
+}
+.ex-nbfc {
+  overflow: hidden;
+}
+.ex-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ex-fs{
+  font-size: $rem;
+}
+
+/* font-size */
+@each $st,$s in $size{
+  .ex-fs{
+    font-size: $rem;
+  }
+  .ex-fs-#{$st}{
+    font-size: $s;
+  }
+}
+
+.ex-fixed-bottom{
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.ex-shadow{
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+

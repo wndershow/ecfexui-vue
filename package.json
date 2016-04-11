@@ -34,8 +34,12 @@
     "file-loader": "^0.8.5",
     "firebase": "^2.3.1",
     "koa": "^1.2.0",
+    "koa-body": "^1.4.0",
+    "koa-router": "^5.4.0",
+    "koa-validate": "^0.2.11",
     "koa-views": "^4.1.0",
     "superagent": "^1.8.3",
+    "underscore": "^1.8.3",
     "url-loader": "^0.5.7",
     "vue": "^1.0.8",
     "vue-router": "^0.7.6"

@@ -7,6 +7,11 @@ import './../src/exui.scss';
 //安装路由插件
 Vue.use(Router);
 
+Vue.transition('bounce', {
+  enterClass: 'bounceInLeft',
+  leaveClass: 'bounceOutRight'
+});
+
 var router = new Router({
   hashbang:false,
   history:true

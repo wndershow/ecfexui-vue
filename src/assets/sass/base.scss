@@ -1,9 +1,19 @@
 @import "./var.scss";
 
+/**reset**/
 *{
   box-sizing: border-box;
 }
 
+.weui_mask, .weui_mask_transition, .weui_mask_transparent {
+  z-index: 1000 !important;
+}
+
+.weui_toast {
+  z-index: 1001 !important;
+}
+
+/**new**/
 $padding: padding padding-left padding-top padding-bottom padding-right padding-v padding-h;
 @each $i in $padding {
 
@@ -209,6 +219,7 @@ $margin: margin margin-left margin-top margin-bottom margin-right margin-v margi
   left: 0;
   bottom: 0;
   position: fixed;
+  z-index: 10;
 }
 
 .ex-shadow{

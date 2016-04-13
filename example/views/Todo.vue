@@ -1,26 +1,7 @@
 <template>
-    <div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom">这是一首简单的小情歌</div>
-        <div class="ex-padding-xs ex-bd-bottom ex-fs">这是一首简单的小情歌</div>
+    <div style="height: 100%;">
+
+        <alert title="asdf" :show.sync="show">asdfasdf</alert>
 
         <div class="ex-fixed-bottom ex-padding-s ex-bg-white ex-bd-top ex-shadow">
             <button type="primary" @click="showAddPanel">添加项目</button>
@@ -41,10 +22,6 @@
             </div>
 
         </dialog>
-
-
-        <div style="height: 6rem;"></div>
-
     </div>
 </template>
 
@@ -53,8 +30,11 @@
     import Button from 'vux/components/button';
     import Dialog from './../../src/components/Dialog.vue';
     import AjaxBtn from './../../src/components/AjaxBtn.vue';
+    import PullMore from './../../src/components/PullMore.vue';
     import Loading from 'vux/components/loading';
     import req from 'superagent';
+    import Scroller from 'vux/components/Scroller'
+    import Alert from 'vux/components/Alert'
 
     export default {
         name: 'Todo',
@@ -63,13 +43,14 @@
                 todo: {
                     title: 'dddd'
                 },
+                show:true,
                 loading: {
                     show: false
                 }
             }
         },
         components: {
-            Button, Dialog, Loading,AjaxBtn
+            Button, Dialog, Loading,AjaxBtn,PullMore,Scroller,Alert
         },
         methods: {
             onAdd: function (e) {
@@ -77,7 +58,28 @@
             },
             showAddPanel:function(e){
                 this.$refs.paneladd.open();
+            },
+
+            pulldownLoading:function(uuid){
+                const _this = this
+                setTimeout(function () {
+                    _this.$broadcast('pulldown:reset', uuid)
+                }, 500)
+            },
+
+            load: function (uuid) {
+                const _this = this
+                setTimeout(function () {
+                    _this.$broadcast('pulldown:reset', uuid)
+                }, 2000)
             }
+
+
         }
     }
 </script>
+<style>
+    html,body,#app{
+        height: 100%;
+    }
+</style>

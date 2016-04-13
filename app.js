@@ -22,12 +22,23 @@ router.post('/api/todos', function *(next) {
 
   this.app.todos = todos;
   
-  console.info(this.app.todos);
-
   this.body = {
     status: 'OK',
     msg: '操作成功!',
     data: todo
+  };
+
+});
+
+router.get('/api/todos', function *(next) {
+
+  var todo = this.request.body;
+  var todos = this.app.todos || [];
+
+  this.body = {
+    status: 'OK',
+    msg: '操作成功!',
+    data: todos
   };
 
 });

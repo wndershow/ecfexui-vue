@@ -68,7 +68,14 @@
                 });
 
             }
+
+        },
+        events: {
+            'abc': function (event) {
+                return false;
+            }
         }
+
     }
 
 </script>

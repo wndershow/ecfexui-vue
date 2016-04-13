@@ -4,6 +4,9 @@
   "description": "ecfex 移动组件库",
   "main": "src/index.js",
   "devDependencies": {
+    "vue-hot-reload-api": "^1.2.0"
+  },
+  "dependencies": {
     "babel-core": "^6.1.21",
     "babel-loader": "^6.1.0",
     "babel-plugin-transform-runtime": "^6.1.18",
@@ -16,18 +19,14 @@
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "stylus-loader": "^1.4.0",
-    "vue-hot-reload-api": "^1.2.0",
-    "vue-html-loader": "^1.0.0",
-    "vue-loader": "^7.0.3",
-    "vux": "0.0.105"
-  },
-  "dependencies": {
     "file-loader": "^0.8.5",
     "superagent": "^1.8.3",
     "underscore": "^1.8.3",
     "url-loader": "^0.5.7",
     "vue": "^1.0.8",
-    "vue-router": "^0.7.6"
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^7.0.3",
+    "vux": "0.0.105"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

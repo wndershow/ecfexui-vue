@@ -1,4 +1,5 @@
-exports.hello = function(){
-  console.info('hello');
+module.exports = {
+  AjaxBtn : require('./components/AjaxBtn.vue'),
+  Dialog : require('./components/Dialog.vue'),
+  PullMore : require('./components/PullMore.vue')
 }
-

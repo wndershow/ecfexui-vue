@@ -21,7 +21,7 @@ router.post('/api/todos', function *(next) {
   todos.push(todo);
 
   this.app.todos = todos;
-  
+
   this.body = {
     status: 'OK',
     msg: '操作成功!',

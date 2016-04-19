@@ -1,82 +1,76 @@
 <template>
-    <btn type="primary" @click="click"><slot></slot></btn>
-    <loading :show="loading.show" text="处理中"></loading>
+  <btn type="primary" @click="click" :disabled="isDisabled">
+    <slot></slot>
+  </btn>
+  <req v-ref:req :url="url" :method="method"></req>
 </template>
 
 <script>
 
-    import Btn from 'vux/components/button/'
-    import Loading from 'vux/components/loading';
-    import req from 'superagent'
-    var _ = require('underscore');
+  import Btn from 'vux/components/button'
+  import Req from './Req.vue';
+  var _ = require('underscore');
 
-    export default {
-        name: 'AjaxBtn',
-        props: {
-            url : {
-                type : String,
-                required:true
-            },
-            method : {
-                type : String,
-                default:'get'
-            },
-            data:{
-                type : Object,
-                default:{}
-            }
-        },
-        components: {
-            Btn,Loading
-        },
-        data:function(){
 
-            return {
-                loading:{
-                    show: false
-                }
-            };
-
-        },
-        methods:{
-            click(e){
-
-                var _this = this;
-
-                var data = _this.data;
-
-                var params = {};
-                if(!_this.$dispatch('before', params)) return false;
-
-                _this.loading.show = true;
-
-                data = _.extend(data,params);
-
-                var r = null;
-
-                if(this.method == 'get'){
-                    r = req.get(this.url)
-                        .query(this.data);
-                }else if(this.method == 'post'){
-                    r = req.post(this.url)
-                        .send(this.data);
-                }
-
-                r.end(function(err, res){
-                    _this.loading.show = false;
-                    _this.$dispatch('after', res.body);
-                });
-
-            }
-
-        },
-        events: {
-            'abc': function (event) {
-                return false;
-            }
+  export default {
+    name: 'AjaxBtn',
+    props: {
+      url: {
+        type: String,
+        required: true
+      },
+      method: {
+        type: String,
+        default: 'get'
+      },
+      data: {
+        type: Object,
+        default: function(){
+          return {};
         }
+      }
+    },
+    components: {
+      Btn, Req
+    },
+    data: function () {
+      return {
+        isDisabled:false,
+        loading: {
+          show: false
+        }
+      };
 
+    },
+    methods: {
+
+      click(){
+
+        var _this = this;
+
+        if(this.isDisabled) return;
+
+        var data = this.data;
+
+        var params = {};
+        if (!this.$dispatch('before', params)) return;
+        
+        data = _.extend(data, params);
+        
+        this.isDisabled = true;
+        this.$refs.req.send(data,function(res){
+          _this.isDisabled = false;
+          _this.$dispatch('after', res);
+        });
+
+        return;
+      }
+
+    },
+    events: {
     }
+
+  }
 
 </script>
 

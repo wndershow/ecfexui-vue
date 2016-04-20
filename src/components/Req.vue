@@ -49,6 +49,12 @@
         } else if (this.method == 'post') {
           r = req.post(this.url)
                   .send(data);
+        } else if (this.method == 'patch') {
+          r = req.patch(this.url)
+                  .send(data);
+        } else if (this.method == 'delete') {
+          r = req.delete(this.url)
+                  .query(data);
         }
 
         r.end(function (err, res) {

@@ -3,11 +3,16 @@
 
   <div v-if="loading.show" class="doing"><spinner type="ripple"></spinner></div>
 
+  <toast :show.sync="toast.show">操作成功</toast>
+
+  <div v-show="tip.show" class="ex-tip">{{tip.title}}</div>
+
 </template>
 
 <script>
 
   import Spinner from 'vux/components/spinner';
+  import Toast from 'vux/components/toast';
   import req from 'superagent'
 
   export default {
@@ -23,17 +28,36 @@
       }
     },
     components: {
-      Spinner
+      Spinner,Toast
     },
     data: function () {
 
       return {
         loading: {
           show: false
+        },
+        toast:{
+          show:false
+        },
+        tip:{
+          show:false,
+          title:'这里是一个错误'
         }
       };
 
     },
+    watch: {
+      'tip.show':function(val){
+        var _this = this;
+        if (val) {
+          clearTimeout(this.timeout)
+          this.timeout = setTimeout(function () {
+            _this.tip.show = false
+          }, 2000)
+        }
+      }
+    },
+
     methods: {
 
       send(data,cb){
@@ -60,9 +84,23 @@
         r.end(function (err, res) {
 
           _this.loading.show = false;
+          var bd = res.body;
 
           if(typeof cb == 'function'){
-            cb(res.body);
+
+            if(cb(bd) === false) return;
+
+            if(bd.status == 'OK'){
+              _this.toast.show = true;
+              return;
+            }
+
+            if(bd.status == 'ERROR'){
+              _this.tip.show = true;
+              _this.tip.title = bd.msg;
+              return;
+            }
+
           }
 
         });
@@ -94,5 +132,18 @@
   .doing span svg{
     margin: 0 auto;
     font-size: 4rem;;
+  }
+
+  .ex-tip{
+    position: fixed;
+    padding: .5rem 1rem;
+    bottom: 10%;
+    left: 50%;
+    background-color: rgba(0,0,0,.7);;
+    color: #fff;
+    border-radius: .3rem;
+    font-size: .8em;
+    z-index: 10000;
+    transform: translateX(-50%);
   }
 </style>

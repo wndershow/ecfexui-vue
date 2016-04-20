@@ -36,8 +36,8 @@ router.get('/api/todos', function *(next) {
   var todos = this.app.todos || [];
 
   this.body = {
-    status: 'OK',
-    msg: '操作成功!',
+    status: 'ERROR',
+    msg: '操作dddd成功!',
     data: todos
   };
 

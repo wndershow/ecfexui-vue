@@ -1,19 +1,22 @@
 <template>
   <div class="page" transition="app" style="padding: 1rem;">
-      <ajax-btn url="/api/todos" @after="tttt">asdfasdddd</ajax-btn>
+    <req v-ref:req url="/api/todos"></req>
   </div>
 </template>
 
 <script>
 
-  import AjaxBtn from '../../src/components/AjaxBtn.vue';
+  import Req from '../../src/components/Req.vue';
 
   export default {
     name: 'Home',
     components: {
-      AjaxBtn
+      Req
     },
     ready:function(){
+      this.$refs.req.send({},function(res){
+        return true;
+      });
     },
     methods:{
       tttt(res){

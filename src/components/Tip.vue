@@ -13,7 +13,7 @@
       }
     },
     watch: {
-      'tip.show':function(val){
+      'show':function(val){
         var _this = this;
         if (val) {
           clearTimeout(this.timeout)

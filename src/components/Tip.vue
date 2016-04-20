@@ -1,5 +1,5 @@
 <template>
-  <div v-show="tip.show" class="ex-tip">{{tip.title}}</div>
+  <div v-show="show" class="ex-tip"><slot></slot></div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@
         if (val) {
           clearTimeout(this.timeout)
           this.timeout = setTimeout(function () {
-            _this.tip.show = false
+            _this.show = false
           }, 2000)
         }
       }

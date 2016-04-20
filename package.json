@@ -1,6 +1,6 @@
 {
   "name": "ecfexui-vue",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "ecfex 移动组件库",
   "main": "src/index.js",
   "devDependencies": {

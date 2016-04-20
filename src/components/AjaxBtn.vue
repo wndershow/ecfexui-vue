@@ -63,8 +63,8 @@
           return _this.$dispatch('after', res);
         });
 
-        return;
-        
+        return true;
+
       }
 
     },

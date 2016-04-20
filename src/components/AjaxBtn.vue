@@ -60,10 +60,11 @@
         this.isDisabled = true;
         this.$refs.req.send(data,function(res){
           _this.isDisabled = false;
-          _this.$dispatch('after', res);
+          return _this.$dispatch('after', res);
         });
 
         return;
+        
       }
 
     },

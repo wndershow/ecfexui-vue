@@ -87,8 +87,8 @@
           var bd = res.body;
 
           if(typeof cb == 'function'){
-
-            if(cb(bd) === false) return;
+            cb(bd);
+            return;
 
             if(bd.status == 'OK'){
               _this.toast.show = true;

@@ -124,6 +124,7 @@
     margin-top: -2.5rem;
     margin-left: -2.5rem;
     text-align: center;
+    z-index: 10000;
   }
 
   .doing span{

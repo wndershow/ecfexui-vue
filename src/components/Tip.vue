@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'Tip',
     props: {
@@ -24,7 +23,6 @@
       }
     }
   }
-
 </script>
 
 <style>

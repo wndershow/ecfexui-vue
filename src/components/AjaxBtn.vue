@@ -7,7 +7,7 @@
 
 <script>
 
-  import Btn from 'vux/components/button'
+  import Btn from 'vux/components/x-button'
   import Req from './Req.vue';
   var _ = require('underscore');
 

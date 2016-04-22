@@ -7,12 +7,14 @@
 
   import req from 'superagent';
   import _ from 'lodash';
+  import Spinner from 'vux/components/spinner';
 
   export default {
     name: 'Request',
     props: {
     },
     components: {
+      Spinner
     },
     data: function () {
 

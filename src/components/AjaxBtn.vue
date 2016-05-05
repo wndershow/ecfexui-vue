@@ -2,15 +2,14 @@
   <btn type="primary" @click="click" :disabled="isDisabled">
     <slot></slot>
   </btn>
-  <req v-ref:req :url="url" :method="method"></req>
+  <req v-ref:req></req>
 </template>
 
 <script>
 
   import Btn from 'vux/components/x-button'
-  import Req from './Req.vue';
+  import Req from './Request.vue';
   var _ = require('underscore');
-
 
   export default {
     name: 'AjaxBtn',
@@ -58,9 +57,21 @@
         data = _.extend(data, params);
         
         this.isDisabled = true;
-        this.$refs.req.send(data,function(res){
-          _this.isDisabled = false;
-          return _this.$dispatch('after', res);
+        this.$refs.req.send({
+          url:_this.url,
+          data:data,
+          onEnd:function(err,res){
+            _this.isDisabled = false;
+            _this.$dispatch('after', res.body);
+          },
+          onSuccess:function(bd){
+            _this.isDisabled = false;
+            return _this.$dispatch('success', bd);
+          },
+          onError:function(bd){
+            _this.isDisabled = false;
+            return _this.$dispatch('error', bd);
+          }
         });
 
         return true;

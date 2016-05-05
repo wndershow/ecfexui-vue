@@ -1,6 +1,7 @@
 <template>
   <div class="req"></div>
   <div v-if="loading.show" class="doing"><spinner type="ripple"></spinner></div>
+  <tip :show.sync="tip.show">{{tip.msg}}</tip>
 </template>
 
 <script>
@@ -8,19 +9,24 @@
   import req from 'superagent';
   import _ from 'lodash';
   import Spinner from 'vux/components/spinner';
+  import Tip from 'Tip.vue';
 
   export default {
     name: 'Request',
     props: {
     },
     components: {
-      Spinner
+      Spinner,Tip
     },
     data: function () {
 
       return {
         loading: {
           show: false
+        },
+        tip:{
+          show:false,
+          msg:'提示'
         }
       };
 
@@ -78,6 +84,21 @@
             obj.onSuccess(bd);
           }else if(bd.status == 'ERROR'){
             obj.onError(err);
+          }else if(bd.status == 'SUCC-TIP'){
+            var flag = obj.onSuccess(bd);
+            if(!flag) return;
+
+            _this.tip.msg = bd.msg;
+            _this.tip.show = true;
+
+          }else if(bd.status == 'FAIL-TIP'){
+
+            var flag = obj.onError(bd);
+            if(!flag) return;
+
+            _this.tip.msg = bd.msg;
+            _this.tip.show = true;
+
           }
 
           return;
@@ -119,7 +140,7 @@
     padding: .5rem 1rem;
     bottom: 10%;
     left: 50%;
-    background-color: rgba(0,0,0,.7);;
+    background-color: rgba(0,0,0,.7);
     color: #fff;
     border-radius: .3rem;
     font-size: .8em;

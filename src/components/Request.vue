@@ -9,7 +9,7 @@
   import req from 'superagent';
   import _ from 'lodash';
   import Spinner from 'vux/components/spinner';
-  import Tip from 'Tip.vue';
+  import Tip from './Tip.vue';
 
   export default {
     name: 'Request',

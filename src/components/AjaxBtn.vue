@@ -60,6 +60,7 @@
         this.$refs.req.send({
           url:_this.url,
           data:data,
+          method:_this.method,
           onEnd:function(err,res){
             _this.isDisabled = false;
             _this.$dispatch('after', res.body);
